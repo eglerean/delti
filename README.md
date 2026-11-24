@@ -5,7 +5,7 @@ Data, Ethics, Law, Technology, Individuals (DELTI)
 Slides made with [Slidev](https://sli.dev) and the Aalto Scientific Computing theme (`slidev-theme-aalto-scicomp/`, included in this repo).
 
 - Source: https://github.com/eglerean/delti
-- Published slides: https://eglerean.github.io/delti/ (after GitHub Pages is turned on, see below)
+- Published slides: https://eglerean.github.io/delti/ 
 
 ## What's in the repo
 

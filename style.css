@@ -71,3 +71,6 @@
 
 /* Dark cards: light Aalto blue keeps links readable on black */
 .slidev-layout .card.dark a { color: var(--aalto-blue); }
+
+/* D·E·L·T·I strip on the section dividers: the current block in Aalto yellow */
+.slidev-layout .delti-on { color: var(--aalto-yellow); font-weight: 700; }

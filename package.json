@@ -1,0 +1,16 @@
+{
+  "name": "delti",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export",
+    "dev:classic": "VITE_PALETTE=aalto-classic slidev --open",
+    "dev:scicomp-web": "VITE_PALETTE=scicomp-web slidev --open",
+    "pdf": "slidev export --with-toc --output public/Glerean_2026_DataEthicsLawTechnology.pdf"
+  },
+  "dependencies": {
+    "@slidev/cli": "~0.47.5"
+  }
+}

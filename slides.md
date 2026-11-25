@@ -56,12 +56,12 @@ layout: two-cols
 ::left::
 
 ### Outline
-1. Intro: Ethics is not Law
-2. <b>D</b>ata about individuals
-3. <b>E</b>thics
-4. <b>L</b>aw
-5. <b>T</b>echnology
-6. <b>I</b>ndividuals
+
+1. <b>D</b>ata about individuals: when does it become health data?
+2. <b>E</b>thics in research and in innovation
+3. <b>L</b>aw - governing data and digital systems
+4. <b>T</b>echnology - privacy and AI
+5. <b>I</b>ndividuals - we are all study participants
 ::right::
 
 ### Learning outcomes
@@ -92,22 +92,14 @@ Several slides in the T block draw on the EDPB book "Fundamentals of Secure AI S
 layout: default
 ---
 
-# You will make design choices that no DPO can undo later
+# Context for this audience
+###### Digital Health and Human Behaviour course
 
-- As a **researcher**, you design the processing: what to collect, from whom, where to compute, what to publish. The university is the controller, but your plan decides what it controls.
-- As a **data scientist** in a company, the data protection officer advises and the product team decides. Accountability (GDPR Art 5(2), 24) sits with the organisation, and your design is what it is accountable for.
-- In this course your data are mostly **health data**: they need a legal basis *and* an Article 9 condition, and often a DPIA.
-- The law sets a **floor**. Ethics asks whether you should do it at all, and how well.
-
-<div class="card yellow">
-
-**Thesis of today:** ethics is not law. When they diverge, you have to resolve the gap, and document how you did it.
-
-</div>
-
-<!--
-A DPO advises and checks. The design decisions are yours, and they are hard to change once data are collected.
--->
+- You might become a **researcher** in academia or a company working with data from human participants
+- You might become a **data scientist** in a company or a manager of a team of developers building applications that process **personal data**
+- You most likely won’t need to worry about “***data governance***” and ”***lawfulness of personal data processing***” as the company you will work for will have a legal expert and a **data protection officer**
+- However, **it is beneficial to understand what you can ethically and legally do with data from individuals**
+- **Only very high-risk applications are truly prohibited**, often **cybersecurity** and **transparency towards the data subjects** is all you need to build your application
 
 ---
 layout: section
@@ -118,7 +110,8 @@ class: title-middle
 
 # D. Data about individuals
 
-<span class="delti-on">D</span> · E · L · T · I — what makes data personal, and when it becomes health data
+<span class="delti-on">D</span> · E · L · T · I
+<br>What makes data personal? And when does it become health data?
 
 ---
 layout: default
@@ -127,68 +120,55 @@ title: "Personal data is any information relating to an identifiable person"
 
 ###### D · Data about individuals
 
-# Personal data is any information relating to an identifiable person
+# What is personal data?
 
-- **GDPR Art 4(1):** "any information relating to an identified or identifiable natural person"
-- **Relating to:** by its content, its purpose or its effect on the person
-- **Identifiable:** by any means *reasonably likely* to be used, by the controller or by anyone else (Recital 26)
-- **Per entity:** the same dataset can be personal data for one holder and not for another (CJEU C-413/23 P, *EDPS v SRB*, 2025)
-- **Out of scope:** truly anonymous data, and data of deceased persons (Recital 27), although national law may still protect them, e.g. patient records
+- **Personal data** is a broad concept under the EU’s **General Data Protection Regulation**
+- **Personal data** is information relating to an identified or identifiable natural person  (GDPR Art 4(1))
+- **Identifiable** by any means *reasonably likely* to be used, by the **controller** or by anyone else (GDPR Recital 26)
 - **Practical rule:** if you collect information **from** or **about** people, treat it as personal data
 
-<!--
-Students often think "personal data" means names. The definition is about identifiability and relation, not labels.
-The SRB judgment matters for data sharing: what is anonymous for a recipient may still be personal for the sender who holds the key.
--->
+Exceptions:
+- The same dataset can be personal data for one holder and not for another (CJEU C-413/23 P, *EDPS v SRB*, 2025)
+- **Out of scope:** truly anonymous data, and data of deceased persons (Recital 27), although national law may still protect them, e.g. patient records
+
 
 ---
 layout: default
 title: "Identifiers come in degrees, and sensor data are among them"
 ---
 
-###### D · Data about individuals
+# PD: direct and indirect identifiers (quasi-identifier)
 
-# Identifiers come in degrees, and sensor data are among them
+1. **Direct identifiers:** information which is **sufficient on its own to identify an individual**<br>- e.g. a person’s name, email address (containing the person’s name), personal identification number, fingerprints, a facial image, a person's voice, video, brain scan images, dental records, DNA
+2. **Strong indirect identifiers :** information which **can be used to identify an individual fairly easily**<br>- e.g. a postal address, a phone number, a vehicle registration number, bibliographic citation of a publication, an email address not in the form of the personal name, an unusual job title, a very rare disease, a job position held by only one person at a time, a student ID number, a bank account number, IP address of a computer, cookie identifier, RFID tags, location data
+3. **Indirect identifiers:** information that on its own is not enough to identify someone but, when **linked with other available information, could be used to deduce the identity of a person:**<br>- e.g. age, gender, education, status in employment, economic activity and occupational status, socio-economic status, household composition, income, marital status, mother tongue, ethnic background, place of work or study, postal code, municipality, major region.
 
-1. **Direct identifiers:** enough on their own to identify a person<br>- e.g. name, personal identity code, face image, voice, fingerprints, brain scan images, DNA
-2. **Strong indirect identifiers:** identify a person fairly easily<br>- e.g. postal address, phone number, email address, a rare disease, a unique job title, student ID, IP address, cookie identifier, location data
-3. **Indirect identifiers:** identify a person when combined with other information<br>- e.g. age, sex, education, occupation, income, marital status, mother tongue, place of work or study, postal code, municipality
-4. **Sensor and behavioural data:** patterns that are unique to a person<br>- e.g. location traces, gait from accelerometers, ECG and heart-rate patterns, typing rhythm, sleep timing
+###### Sensor and behavioural data
+Patterns that are unique to a person - e.g. location traces, gait from accelerometers, ECG and heart-rate patterns, typing rhythm, sleep timing - must be treated as **direct identifiers**.
 
-<!--
-Items 1 to 3 follow the three-tier scheme used by social science data archives.
-Item 4 is the one that matters most in this course: none of these signals carry a name, and all of them can single people out.
--->
 
 ---
 layout: default
 title: "Sensor data identify people even without names"
 ---
 
-###### D · Data about individuals
 
-# Sensor data identify people even without names
+# Digital traces and re-identification example
 
-- **Four points are enough:** four location–time points uniquely identified 95% of 1.5 million people in mobile phone data (de Montjoye et al., 2013)
-- **Demographics are enough:** 15 demographic attributes would correctly re-identify 99.98% of Americans in any dataset (Rocher et al., 2019)
-- **A few ratings are enough:** movie ratings with dates re-identified Netflix Prize users (Narayanan & Shmatikov, 2008)
-- **Aggregates can reveal too:** Strava's heat map of shared activities exposed military bases (2018)
+- **Four points are enough:** in 15 months of mobile phone records, coarsened to the hour and the nearest cell tower, four location–time points uniquely identified 95% of 1.5 million people ([de Montjoye et al., 2013](https://doi.org/10.1038/srep01376))
+- **Demographics are enough:** a model trained on census data estimated that 15 demographic attributes (e.g. ZIP code, birth date, gender, number of children) would correctly re-identify 99.98% of Americans in any dataset, even a small sample ([Rocher et al., 2019](https://doi.org/10.1038/s41467-019-10933-3))
+- **A few ratings are enough:** eight movie ratings with approximate dates singled out 99% of the "anonymised" Netflix Prize users, and matching them with public IMDb reviews linked some of them to public profiles ([Narayanan & Shmatikov, 2008](https://doi.org/10.1109/SP.2008.33))
+- **Aggregates can reveal too:** Strava's global heat map of users' shared runs and rides showed the outlines and patrol routes of military bases ([The Guardian, 2018](https://www.theguardian.com/world/2018/jan/28/fitness-tracking-app-gives-away-location-of-secret-us-army-bases))
 
 <div class="ref-bottom">Jarmul, K. (2023). Practical Data Privacy, ch. 4. O'Reilly. · Glerean, E. (2025). Fundamentals of Secure AI Systems with Personal Data, ch. 4. EDPB Support Pool of Experts.</div>
 
-<!--
-The lesson: removing names does not anonymise. Uniqueness grows with every extra column and every extra day of sensor data.
-Smartwatch data are high-dimensional and longitudinal, which is exactly the setting in which these attacks work.
--->
 
 ---
 layout: default
-title: "Health data include what you infer, not only what you measure"
+
 ---
 
-###### D · Data about individuals
-
-# Health data include what you infer, not only what you measure
+# Health data: measured and inferred
 
 <div class="grid-2">
 <div>
@@ -207,20 +187,15 @@ Processing them is **prohibited unless** an Art 9(2) condition applies (L block)
 </div>
 <div class="card yellow">
 
-**Inference counts**
+**Inference counts as health data**
 
-- Data that **indirectly reveal** a special category are covered (CJEU C-184/20, *OT*, 2022)
-- Online orders of pharmacy-only medicines are health data (CJEU C-21/23, *Lindenapotheke*, 2024)
-- A model that predicts low mood or insomnia from sleep and activity **creates** health data
-- Repeated GPS visits to a place of worship or a clinic can reveal religion or health
+- Data that **indirectly reveal** a special category ([CJEU C-184/20, *OT*, 2022](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62020CJ0184))
+- Online orders of pharmacy-only medicines are health data ([CJEU C-21/23, *Lindenapotheke*, 2024](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62023CJ0021))
+- A model that predicts low mood or insomnia from sleep and activity **creates** health data (GPS and phone use predict depressive symptoms: [Saeb et al., 2015](https://doi.org/10.2196/jmir.4273))
+- Repeated GPS visits to a place of worship or a clinic can reveal religion or health (case [FTC v. Kochava, 2022](https://www.ftc.gov/news-events/news/press-releases/2022/08/ftc-sues-kochava-selling-data-tracks-people-reproductive-health-clinics-places-worship-other))
 
 </div>
 </div>
-
-<!--
-Digital phenotyping is inference by design, so its outputs are special-category data even when the inputs looked harmless.
-Art 9 is a prohibition with exceptions, not a permission with extra requirements.
--->
 
 ---
 layout: section
@@ -231,45 +206,61 @@ class: title-middle
 
 # E. Ethics
 
-D · <span class="delti-on">E</span> · L · T · I — principles, their conflicts, and when review is mandatory
+D · <span class="delti-on">E</span> · L · T · I
+<br>Research ethics principles, and risk mitigation
 
 ---
 layout: default
-title: "Ethics, law and research integrity answer different questions"
 ---
 
-###### E · Ethics
+# Ethics
 
-# Ethics, law and research integrity answer different questions
+<br>
 
-<div class="compact">
+- 1 a: a set of **moral principles** : a theory or system of moral values<br>—often used in plural but singular or plural in constructionan elaborate ethics
+  - b: the principles of conduct governing an individual or a group
+  - c: a consciousness of moral importance
+  - d: a guiding philosophy
+- 2 ethics: a set of **moral issues or aspects** (such as rightness)
+- 3 ethics: the **discipline** dealing with what is good and bad and with moral duty and obligation
 
-| | Question | Sources | Who enforces |
-| --- | --- | --- | --- |
-| **Ethics** | Should we do this, and how? | Principles, professional codes, ethics committees | Peers, committees, the public |
-| **Law** | May we, and what must we do? | GDPR, AI Act, MDR, national law | Authorities and courts |
-| **Research integrity** | Are we doing research honestly and verifiably? | ALLEA code (2023), TENK RCR guidelines (2023) | Universities, TENK |
+<div class="ref-bottom">Source: <a href="https://www.merriam-webster.com/dictionary/ethics?utm_campaign=sd&utm_medium=serp&utm_source=jsonld" target="_blank" rel="noopener">Merriam-Webster</a></div>
 
+---
+layout: default
+---
+
+# Ethics is not law
+
+<div class="venn">
+<svg viewBox="0 0 700 342" role="img" aria-label="Venn diagram: two partly overlapping circles, Ethics and Law">
+  <circle cx="346" cy="171" r="171" class="v-ethics" />
+  <circle cx="432" cy="171" r="171" class="v-law" />
+  <text x="113" y="171" class="v-label" style="fill: #990000">Ethics</text>
+  <text x="585" y="171" class="v-label" style="fill: #1155CC">Law</text>
+</svg>
 </div>
 
-- They overlap but do not coincide: a study can be lawful and unethical, or ethical and unlawful
+- In the ideal case they overlap
+- Different countries have different overlap
 - Things can be **ethical but illegal** (giving humanitarian help without permission), or **legal but unethical** (exploiting loopholes to avoid paying taxes)
 
-<!--
-Integrity is the third leg students often forget: openness and reproducibility pull against privacy, which is one of today's main tensions.
--->
+<style>
+.venn { display: flex; justify-content: center; margin: 0.25rem 0 1rem; }
+.venn svg { width: 520px; height: auto; }
+.v-ethics { fill: #F4CCCC; fill-opacity: 0.45; }
+.v-law { fill: #C9DAF8; fill-opacity: 0.46; }
+.v-label { font-size: 44px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+</style>
 
 ---
 layout: default
-title: "Ethics feeds law, and what people accept feeds ethics"
 ---
 
-###### E · Ethics
-
-# Ethics feeds law, and what people accept feeds ethics
+# Ethics and the Normative Cascade
 
 <div class="cascade">
-<svg viewBox="0 -6 665 282" role="img" aria-label="Normative cascade: Ethics leads to Law, Law to Business, Business to Customers, and Customers loop back to Ethics">
+<svg viewBox="-6 -6 670 288" role="img" aria-label="Normative cascade: Ethics leads to Law, Law to Business, Business to Customers, and Customers loop back to Ethics">
   <defs>
     <marker id="nc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" class="nc-head" />
@@ -286,15 +277,15 @@ title: "Ethics feeds law, and what people accept feeds ethics"
 </svg>
 </div>
 
-- **People** decide in what kind of society they want to live; their values become the ethical principles that law builds on
-- You can replace "business" with "government" or "research", and "customers" with "citizens" or "participants"
-- Example ahead: the GDPR's research rules apply only to research that follows ethical standards (L block)
+- **Ethics** is not **law:** in the ideal case they overlap, in practice they never do.
+- **People** decide in what kind of society they want to live and drive ethical principles which are at the base of law
+- You can also replace “business” with “government” and “customers” with “citizens”.
 
-<div class="ref-bottom">Floridi, L. (2023). The Ethics of Artificial Intelligence: Principles, Challenges, and Opportunities. Oxford University Press.</div>
+<div class="ref-bottom">Reference: Floridi, L. (2023). The ethics of artificial intelligence: Principles, challenges, and opportunities.</div>
 
 <style>
 .cascade { margin: 0 0 0.75rem; }
-.cascade svg { width: 420px; height: auto; display: block; }
+.cascade svg { width: 480px; height: auto; display: block; }
 .nc-oval { fill: #fff; stroke: #000; stroke-width: 1.5; }
 .nc-label { font-size: 20px; text-anchor: middle; dominant-baseline: middle; fill: #000; }
 .nc-line { fill: none; stroke: #000; stroke-width: 2; }
@@ -302,73 +293,26 @@ title: "Ethics feeds law, and what people accept feeds ethics"
 .nc-head { fill: #000; }
 </style>
 
-<!--
-The dashed arrow is the feedback loop: what customers or participants tolerate shifts what society considers ethical.
--->
-
 ---
 layout: default
 title: "Five principles: four from bioethics, one added for AI"
 ---
 
-###### E · Ethics
-
-# Five principles: four from bioethics, one added for AI
+# Five principles of ethics
+Four from bioethics (Beauchamp, T. & Childress, J. (2019). Principles of Biomedical Ethics, 8th ed.) and one added for AI (Floridi, L. (2023). The Ethics of Artificial Intelligence)
 
 <div class="compact">
 
 | **Principle** | **Meaning** | **In digital health** |
 | --- | --- | --- |
-| **Beneficence** | Promote well-being and dignity | Sensor-based early warning of a depressive relapse |
-| **Nonmaleficence** | Avoid harm, incl. to privacy and security | Store daily distance instead of raw GPS traces |
-| **Autonomy** | Respect people's informed choices; keep humans in control | Participants can stop sharing watch data at any time, without penalty |
-| **Justice** | Share benefits and burdens fairly; avoid discrimination | Check that the model works as well for groups under-represented in training |
-| **Explicability** | Make AI understandable and accountable | Users and clinicians can see why a "low-mood day" was flagged, and contest it |
+| **Beneficence** | Do only good: Promote well-being of individuals and society | Sensor-based early warning of a depressive relapse |
+| **Nonmaleficence** | Do no harm: avoid harm and minimize risks (e.g. privacy and security) | Store daily distance instead of raw GPS traces |
+| **Autonomy** | Respect individuals' rights to make informed decisions about their lives | Participants can stop sharing watch data at any time, without penalty |
+| **Justice** | Ensure fairness in the distribution of benefits, risks, and resources | Check that the model works as well for groups under-represented in training |
+| **Explicability** | Make AI understandable and accountable | Users and clinicians can see why a "low-mood day" was mis-classified |
 
 </div>
 
-<div class="ref-bottom">Beauchamp, T. & Childress, J. (2019). Principles of Biomedical Ethics, 8th ed. · Floridi, L. (2023). The Ethics of Artificial Intelligence.</div>
-
-<!--
-Floridi's unified framework keeps the four bioethics principles and adds explicability as the enabling principle for AI.
--->
-
----
-layout: default
-title: "The hard cases are conflicts between principles"
----
-
-###### E · Ethics
-
-# The hard cases are conflicts between principles
-
-<div class="grid-2-3">
-<div class="card">
-
-**Example: should we open the study data?**
-
-- **For:** beneficence (others build on it), justice and integrity (results can be checked)
-- **Against:** nonmaleficence (re-identification), autonomy (participants agreed to *this* study)
-
-</div>
-<div>
-
-**A method you can document**
-
-1. Name the conflict, and who carries each risk
-2. List options: aggregate release, controlled access, tested synthetic data, data-use agreements
-3. Choose the least intrusive option that still serves the purpose
-4. Write down the decision and when you will revisit it
-
-</div>
-</div>
-
-- Principles alone cannot guarantee ethical AI: they need methods and accountability (Mittelstadt, 2019)
-- The law balances in the same way: freedom of research (Charter Art 13) against data protection (Art 8), through proportionality (Art 52(1))
-
-<!--
-This is the method students will reuse in the pair task. The answer is rarely "open" or "closed"; it is usually "as open as possible, as closed as necessary".
--->
 
 ---
 layout: default
@@ -377,7 +321,7 @@ title: "Ethics review starts with listing the issues"
 
 ###### E · Ethics
 
-# Ethics review starts with listing the issues
+# Research ethics requires pre-evaluation of risks before conducting research that can cause harm
 
 **Horizon Europe ethics issues table** ([guidance](https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/common/guidance/how-to-complete-your-ethics-self-assessment_en.pdf))
 
@@ -413,12 +357,11 @@ This is the official list from "How to complete your ethics self-assessment" (v2
 
 ---
 layout: default
-title: "Ethical pre-review in Finland depends on the type of study"
 ---
 
 ###### E · Ethics
 
-# Ethical pre-review in Finland depends on the type of study
+# Ethical pre-review in Finland
 
 <div class="prereview">
 <div>
@@ -460,15 +403,31 @@ title: "Industry research has no mandatory ethics review"
 # Industry research has no mandatory ethics review
 
 - Companies experiment on users every day (A/B tests); most are product decisions, not research
-- **Facebook, 2014:** news feeds of 689,003 users were altered for one week to test emotional contagion. Consent relied on the data use policy; the journal later added an editorial expression of concern
-- What fills the gap in the EU today:
-    - data protection impact assessment (GDPR Art 35)
-    - fundamental rights impact assessment for some deployers of high-risk AI (AI Act Art 27)
-    - conformity assessment for regulated products
+- **<a href="https://www.pnas.org/doi/10.1073/pnas.1320040111">Facebook, 2014</a>:** news feeds of 689,003 users were altered for one week to test emotional contagion. Consent relied on the data use policy; the journal later added an editorial expression of concern
+- Possible solutions: risks mitigation in EU:
+    - **Data Protection Impact Assessment** (GDPR Art 35)
+    - **Fundamental Rights Impact Assessment** for some deployers of high-risk AI (AI Act Art 27)
+    - **Conformity assessment** for regulated products
     - internal review boards, staff, reputation
-- A company that claims "scientific research" to use the GDPR's research rules must meet the research criteria, including ethical standards (EDPB Guidelines 1/2026)
 
-<div class="ref-bottom">Kramer, A., Guillory, J. & Hancock, J. (2014). Experimental evidence of massive-scale emotional contagion through social networks. PNAS 111(24).</div>
+<div class="card dark small">
+
+**Note:** companies that claim "scientific research" for GDPR's research rules must match the six factors ([EDPB Guidelines 1/2026](https://www.edpb.europa.eu/documents/guideline/guidelines-12026-on-processing-of-personal-data-for-scientific-research_en)):
+
+1. **Methodical and systematic approach** 
+2. **Adherence to ethical standards** 
+3. **Verifiability and transparency**
+4. **Autonomy and independence**
+5. **Objectives of the research**
+6. **Potential to contribute to scientific knowledge**
+
+</div>
+
+<style>
+.card.dark { font-size: 0.8rem; line-height: 1.35; margin-top: 0.6rem; }
+.card.dark p { margin-bottom: 0.3rem; }
+.card.dark ol { margin: 0; }
+</style>
 
 <!--
 The question is not whether companies care about ethics, but which mechanisms push ethics into them.
@@ -483,17 +442,18 @@ class: title-middle
 
 # L. Law
 
-D · E · <span class="delti-on">L</span> · T · I — from fundamental rights to the GDPR, the AI Act and device rules
+D · E · <span class="delti-on">L</span> · T · I
+<br>From fundamental rights to the GDPR, the AI Act, and other legislations
 
 ---
 layout: two-cols
-title: "Human rights become binding EU law through the Charter"
+title: "From human rights to law"
 ---
 
 ::header::
 ###### L · Law
 
-# Human rights become binding EU law through the Charter
+# From human rights to law
 
 ::left::
 
@@ -525,7 +485,7 @@ layout: default
 title: "The GDPR in one slide"
 ---
 
-###### L · Law
+###### L · Law - GDPR
 
 # The GDPR in one slide
 
@@ -545,7 +505,7 @@ layout: default
 title: "The principles of the GDPR, applied to research"
 ---
 
-###### L · Law
+###### L · Law - GDPR
 
 # The principles of the GDPR, applied to research
 
@@ -572,9 +532,9 @@ layout: default
 title: "Consent to take part is not the same as the GDPR legal basis"
 ---
 
-###### L · Law
+###### L · Law - GDPR
 
-# Consent to take part is not the same as the GDPR legal basis
+# Consent to take part ≠ GDPR consent legal basis
 
 <div class="grid-2">
 <div class="card">
@@ -597,7 +557,7 @@ title: "Consent to take part is not the same as the GDPR legal basis"
 </div>
 </div>
 
-Ask for both when needed, but keep the two requests **clearly distinguishable** (EDPB Guidelines 1/2026, paras 53–55).
+Ask for both when needed, but keep the two requests **clearly distinguishable** (EDPB Guidelines 1/2026).
 
 <!--
 The most common researcher misconception. With a public-interest basis, data already collected may be kept after someone leaves the study if erasure would seriously impair the research (Art 17(3)(d)); say so in the privacy notice.
@@ -608,11 +568,11 @@ layout: default
 title: "Six legal bases, used differently in academia and industry"
 ---
 
-###### L · Law
+###### L · Law - GDPR
 
-# Six legal bases, used differently in academia and industry
+# Six legal bases  in academia and industry
 
-<div class="small compact">
+<div class="compact">
 
 | **Legal basis (Art 6(1))** | **Typical in academia** | **Typical in industry** |
 | --- | --- | --- |
@@ -635,97 +595,50 @@ layout: default
 title: "Health data need two locks: a legal basis and an Article 9 condition"
 ---
 
-###### L · Law
+###### L · Law - GDPR
 
-# Health data need two locks: a legal basis and an Article 9 condition
+# Health data need two locks
 
-- **Lock 1:** a legal basis under Art 6 (previous slide)
-- **Lock 2:** an exception to the Art 9(1) prohibition. Common ones in research:
+- **Lock 1:** a legal basis under [GDPR Art 6](https://eur-lex.europa.eu/eli/reg/2016/679/oj) (previous slide)
+- **Lock 2:** an exception to the [Art 9(1)](https://eur-lex.europa.eu/eli/reg/2016/679/oj) prohibition. Common ones in research:
     - **(a)** explicit consent
     - **(j)** scientific research based on EU or national law, with Art 89(1) safeguards
     - **(h), (i)** health care and public health
-- **Finland:** Data Protection Act s. 6(1)(7) allows research processing, with suitable and specific safeguards (s. 6(2))
-- **Registry data:** secondary use of Finnish health and social data goes through the Secondary Use Act (552/2019) and Findata
-- **From 2029:** the EHDS adds an EU-wide route for secondary use (later in this block)
+- **Finland:** [Data Protection Act](https://www.finlex.fi/en/legislation/translations/2018/eng/1050) s. 6(1)(7) allows research processing, with suitable and specific safeguards (s. 6(2))
+- **Registry data:** secondary use of Finnish health and social data goes through the [Secondary Use Act (552/2019)](https://www.finlex.fi/fi/lainsaadanto/2019/552) and [Findata](https://findata.fi/en/)
+- **From 2029:** the [EHDS](https://eur-lex.europa.eu/eli/reg/2025/327/oj) adds an EU-wide route for secondary use (later in this block)
+- **If approved:** the [Digital Omnibus proposal](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0837) (Nov 2025) would add a new Art 9(2)(k) exception for residual special-category data in the development and operation of AI.
 
-<div class="ref-bottom">EDPB Guidelines 1/2026 on processing of personal data for scientific research purposes (version for consultation, April 2026).</div>
+<div class="ref-bottom"><a href="https://www.edpb.europa.eu/documents/guideline/guidelines-12026-on-processing-of-personal-data-for-scientific-research_en" target="_blank" rel="noopener">EDPB Guidelines 1/2026 on processing of personal data for scientific research purposes</a> (version for consultation, April 2026).</div>
 
 <!--
 Member States may add conditions for genetic, biometric or health data (Art 9(4)).
+Digital Omnibus status (Nov 2026): the Council agreed its negotiating mandate on 21 October 2026 and narrowed the exception to incidental processing of residual data that the controller did not intend to process; the Parliament has not adopted its position yet, so trilogues have not concluded. Critics argue it weakens Art 9 (European Law Blog). Check the status before teaching.
 -->
 
 ---
 layout: default
-title: "The GDPR's research rules apply only to genuine research"
+title: "Three assessments ask three different questions"
 ---
 
-###### L · Law
+###### L · Law - GDPR
 
-# The GDPR's research rules apply only to genuine research
+# Tools for risk mitigation
 
-<div class="grid-2">
-<div>
+<div class="compact">
 
-**Six indicative factors** (EDPB Guidelines 1/2026, para 11)
-
-1. Methodical and systematic approach
-2. **Adherence to ethical standards**
-3. Verifiability and transparency
-4. Autonomy and independence
-5. Research objectives
-6. Potential to contribute to existing knowledge
+| **Assessment** | **Question** | **Required when** | **Who** |
+| --- | --- | --- | --- |
+| **Ethics review** | Should we do this study, and is it fair to participants? | Medical research; TENK conditions; funder rules | Ethics committee |
+| **DPIA** (GDPR Art 35) | What are the risks to people's rights, and how do we reduce them? | Likely high risk, e.g. health data with systematic monitoring | Controller, advised by the DPO |
+| **Conformity assessment** (MDR, AI Act) | Is the product safe, and does it meet its requirements? | Medical devices; high-risk AI systems | Manufacturer or provider, often a notified body |
+| **FRIA** (AI Act Art 27) | What does deploying this high-risk AI do to fundamental rights? | Public bodies and some private deployers of high-risk AI | Deployer |
 
 </div>
-<div class="card yellow">
 
-**Where ethics becomes law**
-
-Following ethical standards is a condition for the legal privileges of research.
-
-</div>
-</div>
-
-- Commercial research can qualify; a retailer analysing its own sales does not (Example 3)
-- The Council's Digital Omnibus mandate (21 Oct 2026) proposes a GDPR definition of scientific research that requires ethical standards. Not law yet.
 
 <!--
-This is the cleanest illustration of the normative cascade from the E block.
--->
-
----
-layout: two-cols
-title: "Research gets flexibility, and participants keep rights"
----
-
-::header::
-###### L · Law
-
-# Research gets flexibility, and participants keep rights
-
-::left::
-
-### Flexibility for research
-
-- Further use presumed compatible (Art 5(1)(b))
-- Longer storage with safeguards (Art 5(1)(e))
-- Broad consent for a defined research area, with extra safeguards (Recital 33; EDPB 1/2026 paras 40–49)
-- Information exemption for disproportionate effort (Art 14(5)(b))
-- Derogations from rights by law (Art 89(2); Finnish Data Protection Act s. 31)
-- Erasure exception (Art 17(3)(d)); objection limited for public-interest research (Art 21(6))
-
-::right::
-
-### Rights of the data subject
-
-- Information (Art 13, 14) and access (15)
-- Rectification (16) and erasure (17)
-- Restriction (18) and portability (20)
-- Objection (21)
-- No decisions based solely on automated processing with legal or similarly significant effects (22; CJEU C-634/21, *SCHUFA*)
-- Complaint to the Data Protection Ombudsman (77)
-
-<!--
-The flexibility comes with a condition: pseudonymise or anonymise where the purpose allows; identify people directly only where strictly necessary (EDPB 1/2026).
+Students often assume an ethics approval covers data protection, or the reverse. Different questions, different owners, different documents.
 -->
 
 ---
@@ -733,7 +646,7 @@ layout: default
 title: "The data protection impact assessment"
 ---
 
-###### L · Law
+###### L · Law - GDPR
 
 # The data protection impact assessment
 
@@ -760,14 +673,60 @@ Aalto guidelines as an example:<br>**DPIA if 2 or more are true**
 </div>
 </div>
 <div class="dpia-fig">
-  <img src="/images/dpia-process.png" alt="Flowchart of the DPIA process steps">
-  <p class="small"><a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/data-protection-impact-assessments-dpias/how-do-we-do-a-dpia/" target="_blank" rel="noopener">Figure source</a></p>
+  <svg viewBox="-2 -2 504 414" role="img" aria-label="DPIA risk matrix: severity of impact (minimal, some, serious) against likelihood of harm (remote, reasonable possibility, more likely than not). Serious harm is high risk when reasonably possible or more likely; some impact is medium risk when reasonably possible and high risk when more likely than not; everything else is low risk.">
+    <!-- risk cells: columns remote / reasonable / likely, rows serious / some / minimal -->
+    <rect x="140" y="0"   width="120" height="100" class="r-low" />
+    <rect x="260" y="0"   width="120" height="100" class="r-high" />
+    <rect x="380" y="0"   width="120" height="100" class="r-high" />
+    <rect x="140" y="100" width="120" height="100" class="r-low" />
+    <rect x="260" y="100" width="120" height="100" class="r-med" />
+    <rect x="380" y="100" width="120" height="100" class="r-high" />
+    <rect x="140" y="200" width="120" height="100" class="r-low" />
+    <rect x="260" y="200" width="120" height="100" class="r-low" />
+    <rect x="380" y="200" width="120" height="100" class="r-low" />
+    <text x="200" y="50"  class="r-cell">Low risk</text>
+    <text x="320" y="50"  class="r-cell">High risk</text>
+    <text x="440" y="50"  class="r-cell">High risk</text>
+    <text x="200" y="150" class="r-cell">Low risk</text>
+    <text x="320" y="140" class="r-cell">Medium</text>
+    <text x="320" y="162" class="r-cell">risk</text>
+    <text x="440" y="150" class="r-cell">High risk</text>
+    <text x="200" y="250" class="r-cell">Low risk</text>
+    <text x="320" y="250" class="r-cell">Low risk</text>
+    <text x="440" y="250" class="r-cell">Low risk</text>
+    <!-- row labels: severity -->
+    <text x="95" y="40"  class="r-lab">Serious</text>
+    <text x="95" y="62"  class="r-lab">harm</text>
+    <text x="95" y="140" class="r-lab">Some</text>
+    <text x="95" y="162" class="r-lab">impact</text>
+    <text x="95" y="240" class="r-lab">Minimal</text>
+    <text x="95" y="262" class="r-lab">impact</text>
+    <!-- column labels: likelihood -->
+    <text x="200" y="335" class="r-lab">Remote</text>
+    <text x="320" y="324" class="r-lab">Reasonable</text>
+    <text x="320" y="346" class="r-lab">possibility</text>
+    <text x="440" y="324" class="r-lab">More likely</text>
+    <text x="440" y="346" class="r-lab">than not</text>
+    <!-- grid lines -->
+    <path d="M50 0H500M50 100H500M50 200H500M50 300H500M140 370H500M50 0V300M140 0V370M260 0V370M380 0V370M500 0V370" class="r-grid" />
+    <!-- axis titles -->
+    <text x="0" y="0" transform="translate(28 150) rotate(-90)" class="r-axis">Severity of impact</text>
+    <text x="320" y="396" class="r-axis">Likelihood of harm</text>
+  </svg>
+  <p class="small"><a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/data-protection-impact-assessments-dpias/how-do-we-do-a-dpia/" target="_blank" rel="noopener">Derived from this source</a></p>
 </div>
 </div>
 
 <style>
 .dpia { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); gap: 1.5rem; align-items: start; }
-.dpia-fig img { width: 100%; height: auto; }
+.dpia-fig svg { display: block; width: 100%; height: auto; }
+.r-low { fill: #DDF0C4; }
+.r-med { fill: #FFC9A8; }
+.r-high { fill: var(--aalto-red); }
+.r-grid { fill: none; stroke: currentColor; stroke-width: 1.5; }
+.r-cell { font-size: 19px; font-weight: 700; fill: #000; text-anchor: middle; dominant-baseline: middle; }
+.r-lab { font-size: 17px; fill: currentColor; text-anchor: middle; dominant-baseline: middle; }
+.r-axis { font-size: 19px; font-weight: 700; fill: currentColor; text-anchor: middle; dominant-baseline: middle; }
 .dpia-fig p { text-align: right; margin-top: 0.3rem; }
 </style>
 
@@ -775,31 +734,7 @@ Aalto guidelines as an example:<br>**DPIA if 2 or more are true**
 The running case ticks 3, 4, 6 and 7 (students can be vulnerable when the researchers are their teachers): a DPIA is clearly needed.
 -->
 
----
-layout: default
-title: "Three assessments ask three different questions"
----
 
-###### L · Law
-
-# Three assessments ask three different questions
-
-<div class="small compact">
-
-| **Assessment** | **Question** | **Required when** | **Who** |
-| --- | --- | --- | --- |
-| **Ethics review** | Should we do this study, and is it fair to participants? | Medical research; TENK conditions; funder rules | Ethics committee |
-| **DPIA** (GDPR Art 35) | What are the risks to people's rights, and how do we reduce them? | Likely high risk, e.g. health data with systematic monitoring | Controller, advised by the DPO |
-| **Conformity assessment** (MDR, AI Act) | Is the product safe, and does it meet its requirements? | Medical devices; high-risk AI systems | Manufacturer or provider, often a notified body |
-| **FRIA** (AI Act Art 27) | What does deploying this high-risk AI do to fundamental rights? | Public bodies and some private deployers of high-risk AI | Deployer |
-
-</div>
-
-Passing one does not pass the others.
-
-<!--
-Students often assume an ethics approval covers data protection, or the reverse. Different questions, different owners, different documents.
--->
 
 ---
 layout: two-cols
@@ -807,9 +742,9 @@ title: "The AI Act regulates AI by risk, and its dates have moved"
 ---
 
 ::header::
-###### L · Law
+###### L · Law - EU AI Act
 
-# The AI Act regulates AI by risk, and its dates have moved
+# The EU AI Act 
 
 ::left::
 
@@ -845,9 +780,9 @@ layout: default
 title: "The research exemption ends where the product begins"
 ---
 
-###### L · Law
+###### L · Law - EU AI Act
 
-# The research exemption ends where the product begins
+# EU AI Act research exemption
 
 - **Art 2(6):** AI systems or models developed and put into service **for the sole purpose** of scientific research and development are out of scope
 - **Art 2(8):** research, testing and development **before** placing on the market or putting into service are out of scope; **testing in real-world conditions is not**
@@ -856,9 +791,7 @@ title: "The research exemption ends where the product begins"
 - **AI literacy (Art 4)** applies to providers and deployers, e.g. a university that deploys AI tools for its staff
 
 <div class="card blue">
-
-**Running case:** the study's model is out of scope; the spin-out's app is in scope.
-
+<b>Example:</b> a research study's machine learning model is out of scope; but the spin-out's app is in scope.
 </div>
 
 <!--
@@ -870,9 +803,9 @@ layout: default
 title: "Some AI practices have been banned since February 2025"
 ---
 
-###### L · Law
+###### L · Law - EU AI Act
 
-# Some AI practices have been banned since February 2025
+# Prohibited AI systems (February 2025)
 
 <div class="ban">
 <div>
@@ -891,7 +824,7 @@ title: "Some AI practices have been banned since February 2025"
 </div>
 <div class="card yellow">
 
-**Running case**
+**Example**
 
 A university uses the app to monitor students' stress from heart-rate data: emotion inference in education, from biometric data.
 
@@ -917,7 +850,7 @@ title: "High-risk AI in health comes through two routes"
 ---
 
 ::header::
-###### L · Law
+###### L · Law - EU AI Act
 
 # High-risk AI in health comes through two routes
 
@@ -964,9 +897,9 @@ layout: default
 title: "Intended purpose decides whether your app is a medical device"
 ---
 
-###### L · Law
+###### L · Law - Medical device regulation
 
-# Intended purpose decides whether your app is a medical device
+# Medical devices
 
 - A **medical device** has a medical purpose: diagnosis, prevention, monitoring, prediction, prognosis, treatment or alleviation of disease (MDR Art 2(1))
 - The manufacturer's **claims** decide: "track your sleep" is wellness; "detect insomnia" or "predict depressive episodes" is medical
@@ -991,9 +924,9 @@ title: "Device data come with user rights, and health data with a reuse framewor
 ---
 
 ::header::
-###### L · Law
+###### L · Law - Other medical regulations
 
-# Device data come with user rights, and health data with a reuse framework
+# Other regulations related to medical applications
 
 ::left::
 
@@ -1025,9 +958,9 @@ title: "The rules keep moving: the Digital Omnibus"
 ---
 
 ::header::
-###### L · Law
+###### L · Law - Future
 
-# The rules keep moving: the Digital Omnibus
+# Changes in the law: the Digital Omnibus
 
 ::left::
 

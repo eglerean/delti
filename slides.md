@@ -18,6 +18,7 @@ info: |
   Source: https://github.com/eglerean/delti
 keywords: data ethics, GDPR, AI Act, MDR, EHDS, anonymisation, personal data, privacy, research ethics, Enrico Glerean, https://eglerean.github.io/
 layout: cover
+color: sand
 class: no-footer
 hexText: "DATA\nETHICS\nLAW\nTECH"
 hexSeed: 7
@@ -25,15 +26,17 @@ hexSeed: 7
 ###### CS-E4150 - Digital Health and Human Behavior
 
 # Data, Ethics, Law, Technologies, Individuals
-Applied data ethics for digital health
+Applied data ethics for digital health research and innovation
 
 ::presenter::
 **Dr. Enrico Glerean**, Staff Scientist, Aalto University, November 2026
 
-<div class="license-line"><CcBy /> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · <a href="https://github.com/eglerean/delti" target="_blank" rel="noopener" class="gh-link" title="Slides on GitHub" aria-label="Slides on GitHub"><carbon-logo-github class="gh-icon" /></a></div>
+<div class="license-line"><CcBy /> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · <a href="https://github.com/eglerean/delti" target="_blank" rel="noopener" class="gh-link" title="Slides on GitHub" aria-label="Slides on GitHub"><carbon-logo-github class="gh-icon" /> GitHub</a> · <a href="https://eglerean.github.io/delti/Glerean_2026_DataEthicsLawTechnology.pdf" target="_blank" rel="noopener" class="gh-link" title="Slides as PDF" aria-label="Slides as PDF"><carbon-document-pdf class="gh-icon" /> PDF</a></div>
 
 <style>
 h1 { font-size: 2.5rem !important; line-height: 1.1 !important; }
+/* Red eyebrow on the yellow cover, same red as the eyebrows on the other slides */
+h6, h6:not(.opacity-100) { color: #E8413E !important; }
 p { font-size: 0.95rem; }
 .cover-presenter p { font-size: 0.85rem; }
 .license-line { margin-top: 0.45rem; font-size: 0.75rem; white-space: nowrap; }
@@ -143,8 +146,8 @@ title: "Identifiers come in degrees, and sensor data are among them"
 2. **Strong indirect identifiers :** information which **can be used to identify an individual fairly easily**<br>- e.g. a postal address, a phone number, a vehicle registration number, bibliographic citation of a publication, an email address not in the form of the personal name, an unusual job title, a very rare disease, a job position held by only one person at a time, a student ID number, a bank account number, IP address of a computer, cookie identifier, RFID tags, location data
 3. **Indirect identifiers:** information that on its own is not enough to identify someone but, when **linked with other available information, could be used to deduce the identity of a person:**<br>- e.g. age, gender, education, status in employment, economic activity and occupational status, socio-economic status, household composition, income, marital status, mother tongue, ethnic background, place of work or study, postal code, municipality, major region.
 
-###### Sensor and behavioural data
-Patterns that are unique to a person - e.g. location traces, gait from accelerometers, ECG and heart-rate patterns, typing rhythm, sleep timing - must be treated as **direct identifiers**.
+##### Sensor and other digital traces are direct identifiers
+Many type of raw sensor data (EGC and heart-rate time series, gait from accelerometers, sleep data) and other digital traces (location, typing time series, internet history) should be treated as **direct identifiers** since with enough data, it is possible to build a fingerprint. 
 
 
 ---
@@ -153,12 +156,12 @@ title: "Sensor data identify people even without names"
 ---
 
 
-# Digital traces and re-identification example
+# Digital traces and re-identification examples
 
-- **Four points are enough:** in 15 months of mobile phone records, coarsened to the hour and the nearest cell tower, four location–time points uniquely identified 95% of 1.5 million people ([de Montjoye et al., 2013](https://doi.org/10.1038/srep01376))
-- **Demographics are enough:** a model trained on census data estimated that 15 demographic attributes (e.g. ZIP code, birth date, gender, number of children) would correctly re-identify 99.98% of Americans in any dataset, even a small sample ([Rocher et al., 2019](https://doi.org/10.1038/s41467-019-10933-3))
-- **A few ratings are enough:** eight movie ratings with approximate dates singled out 99% of the "anonymised" Netflix Prize users, and matching them with public IMDb reviews linked some of them to public profiles ([Narayanan & Shmatikov, 2008](https://doi.org/10.1109/SP.2008.33))
-- **Aggregates can reveal too:** Strava's global heat map of users' shared runs and rides showed the outlines and patrol routes of military bases ([The Guardian, 2018](https://www.theguardian.com/world/2018/jan/28/fitness-tracking-app-gives-away-location-of-secret-us-army-bases))
+- **Four location-time points re-identify 95% of population:** in 15 months of mobile phone records of 1.5 million subjects ([de Montjoye et al., 2013](https://doi.org/10.1038/srep01376))
+- **Fifteen Simple background factors re-identify 99% of population:** 15 demographic attributes (postal code, birth date, gender, number of children) can correctly re-identify 99.98% of Americans in any dataset, even a small sample ([Rocher et al., 2019](https://doi.org/10.1038/s41467-019-10933-3))
+- **Eight public movie ratings are enough:** movie ratings with approximate dates singled out 99% of the <i>"anonymised"</i> Netflix Prize users, by matching them with public IMDb reviews ([Narayanan & Shmatikov, 2008](https://doi.org/10.1109/SP.2008.33))
+- **Aggregated data can also be sensitive:** the outlines of military bases where identified in Strava (an app for sharing sports tracking routes) global heat map of users  ([The Guardian, 2018](https://www.theguardian.com/world/2018/jan/28/fitness-tracking-app-gives-away-location-of-secret-us-army-bases))
 
 <div class="ref-bottom">Jarmul, K. (2023). Practical Data Privacy, ch. 4. O'Reilly. · Glerean, E. (2025). Fundamentals of Secure AI Systems with Personal Data, ch. 4. EDPB Support Pool of Experts.</div>
 
@@ -463,7 +466,7 @@ title: "From human rights to law"
 - 30 articles; "all human beings are born free and equal in dignity and rights"
 - **Art 12:** privacy
 - **Art 27:** the right to share in scientific advancement and its benefits
-- [Read all 30 at least once](https://www.un.org/en/about-us/universal-declaration-of-human-rights); data risks per article are in the appendix
+- [Read all 30 at least once](https://www.un.org/en/about-us/universal-declaration-of-human-rights)
 
 ::right::
 
@@ -489,16 +492,13 @@ title: "The GDPR in one slide"
 
 # The GDPR in one slide
 
-- **Regulation (EU) 2016/679:** adopted in 2016, applies since 25 May 2018, with national specifications (Finland: Data Protection Act 1050/2018)
+- **Regulation (EU) 2016/679:** adopted in 2016, (applied from 25 May 2018), with national specifications (Finland: Data Protection Act 1050/2018)
 - **Scope:** organisations in the EU, and organisations elsewhere that offer services to people in the EU or monitor them (Art 3)
-- **Roles follow decisions:** the controller decides why and how; a processor acts on its documented instructions (Art 28); joint controllers decide together (Art 26)
-- **Running case:** the university is the controller of the study; the watch vendor is a processor if it only syncs data for you, and a controller for anything it uses for its own purposes; the spin-out is a new controller
+- **Roles:** the **controller** governs the personal data; a **processor** acts on behalf of the controller and **joint controllers** decide together
+- **Typical case in university:** the university is the controller of the study, some external service (e.g. wearable watch vendor) is a processor if it processes the data for your study.
 - **Authority in Finland:** Office of the Data Protection Ombudsman ([tietosuoja.fi](https://tietosuoja.fi/en/home))
 - **Fines:** up to €20 million or 4% of worldwide annual turnover (Art 83(5))
 
-<!--
-Roles must be documented, especially in public–private partnerships (EDPB Guidelines 1/2026). The spin-out cannot simply inherit the study data: it needs its own legal basis and an agreement with the university.
--->
 
 ---
 layout: default
@@ -551,17 +551,14 @@ title: "Consent to take part is not the same as the GDPR legal basis"
 ### GDPR legal basis (Art 6)
 
 - Finnish universities usually rely on **public interest**: Art 6(1)(e) with Data Protection Act s. 4(3)
-- Consent (Art 6(1)(a)) only if freely given, specific, informed, unambiguous and withdrawable: hard with power imbalances
+- GDPR consent legal basis (Art 6(1)(a)) only if freely given, specific, informed, unambiguous and withdrawable: hard with power imbalances
 - Withdrawing GDPR consent stops processing based on it
 
 </div>
 </div>
 
-Ask for both when needed, but keep the two requests **clearly distinguishable** (EDPB Guidelines 1/2026).
+You can ask for both when needed, but keep the two requests **clearly separated** (EDPB Guidelines 1/2026).
 
-<!--
-The most common researcher misconception. With a public-interest basis, data already collected may be kept after someone leaves the study if erasure would seriously impair the research (Art 17(3)(d)); say so in the privacy notice.
--->
 
 ---
 layout: default
@@ -576,19 +573,15 @@ title: "Six legal bases, used differently in academia and industry"
 
 | **Legal basis (Art 6(1))** | **Typical in academia** | **Typical in industry** |
 | --- | --- | --- |
-| **(a) Consent** | Possible, but fragile with power imbalances and withdrawal | Common for apps; must be freely given and granular |
+| **(a) Consent** | Possible but stricter with withdrawals | Common for apps; must be freely given |
 | **(b) Contract** | Rarely | Providing the service the user signed up for; not for research |
 | **(c&#8203;) Legal obligation** | Statutory reporting | Tax, product vigilance |
 | **(d) Vital interests** | Emergencies only | Emergencies only |
-| **(e) Public interest** | Main basis for Finnish universities (Data Protection Act s. 4(3)) | Only if a law gives the company that task |
-| **(f) Legitimate interests** | Limited for public bodies performing their tasks (Art 6(1), last subparagraph) | Common for commercial research, with a documented balancing test (EDPB Guidelines 1/2024; 1/2026 para 61) |
+| **(e) Public interest** | Most used legal basis for Finnish universities (Data Protection Act s. 4(3)) | Only if a law gives the company that task |
+| **(f) Legitimate interests** | Limited for public bodies performing their tasks (Art 6(1), last subparagraph) | Common for commercial research, with a documented balancing test (EDPB Guidelines 1/2024; 1/2026) |
 
 </div>
 
-<!--
-Legitimate interest is the usual basis for research in companies.
-"Explicit" consent is the stricter Art 9(2)(a) standard, not the Art 6 standard.
--->
 
 ---
 layout: default
@@ -1300,6 +1293,23 @@ D · E · L · T · <span class="delti-on">I</span> — who is harmed, and who i
 
 ---
 layout: default
+title: "You are a data subject too"
+---
+
+###### I · Individuals
+
+# You are a data subject too
+
+- **Digital traces:** cookies, location history, the apps and wearables you use. Use your access right (GDPR Art 15) and, for devices, your Data Act right to see what is collected
+- **Hidden metadata** in files, photos and shared links
+- **Where data are stored matters:** transfers to the US rely on the EU–US Data Privacy Framework (2023), upheld by the General Court in 2025 (*Latombe*, T-553/23); an appeal is pending at the Court of Justice (C-703/25 P)
+- **Your participants** did not sign your employer's contracts with cloud providers: choose tools for them, not for you
+- **Basic data hygiene:** multi-factor authentication, a password manager, updates, encrypted storage and transfer, end-to-end encrypted messaging for sensitive conversations
+
+
+
+---
+layout: default
 title: "Harms are often collective, not only individual"
 ---
 
@@ -1327,105 +1337,64 @@ title: "Five ways to look ethical without being ethical"
 
 # Five ways to look ethical without being ethical
 
-| **Ethics risk** | **Definition** |
-| --- | --- |
-| **Ethics shopping** | Selecting ethical principles that justify existing practices instead of aligning with shared standards |
-| **Ethics bluewashing** | Superficial or misleading claims about ethical benefits without meaningful action |
-| **Ethics lobbying** | Using voluntary ethics to delay or weaken binding rules or their enforcement |
-| **Ethics dumping** | Exporting unethical practices to regions with weaker rules, or importing their results |
-| **Ethics shirking** | Doing less ethical work where accountability is lower |
+<div class="small">
 
-<div class="ref-bottom">Floridi, L. (2019). Translating principles into practices of digital ethics: five risks of being unethical. Philosophy & Technology 32.</div>
+| **Ethics risk** | **Definition** | **In today's AI** |
+| --- | --- | --- |
+| **Ethics shopping** | Selecting ethical principles that justify existing practices instead of aligning with shared standards | "AI will benefit humanity" justifies its energy use: data centres used ~415 TWh in 2024, ~945 TWh projected by 2030 ([IEA, 2025](https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai)) |
+| **Ethics bluewashing** | Superficial or misleading claims about ethical benefits without meaningful action | "Open" language models that do not release training data or code ([Liesenfeld & Dingemanse, 2024](https://dl.acm.org/doi/pdf/10.1145/3630106.3659005)) |
+| **Ethics lobbying** | Using voluntary ethics to delay or weaken binding rules or their enforcement | The Digital Omnibus: simplification or weakening by the back door? Argue both sides |
+| **Ethics dumping** | Exporting unethical practices to regions with weaker rules, or importing their results | Data labelling and content moderation outsourced to low-paid workers in the Global South ([The Guardian, 2023](https://www.theguardian.com/technology/2023/aug/02/ai-chatbot-training-human-toll-content-moderator-meta-openai)) |
+| **Ethics shirking** | Doing less ethical work where accountability is lower | |
 
-<!--
-"Ethics dumping" was first used in research ethics for research exported to low-resource settings; Floridi generalises it to digital ethics.
--->
+</div>
 
----
-layout: default
-title: "The five risks in today's AI"
----
-
-###### I · Individuals
-
-# The five risks in today's AI
-
-- **Ethics shopping:** "AI will benefit humanity" used to justify its energy use. Data centres used about 415 TWh in 2024, projected to reach about 945 TWh by 2030 ([IEA, 2025](https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai))
-- **Ethics bluewashing:** "open" language models that do not release training data or code ([Liesenfeld & Dingemanse, 2024](https://dl.acm.org/doi/pdf/10.1145/3630106.3659005))
-- **Ethics dumping:** data labelling and content moderation outsourced to low-paid workers in the Global South ([The Guardian, 2023](https://www.theguardian.com/technology/2023/aug/02/ai-chatbot-training-human-toll-content-moderator-meta-openai))
-- **Ethics lobbying:** is the Digital Omnibus legitimate simplification or weakening by the back door? Argue both sides
-- **Legal note:** in the EU, training on scraped content falls under the text-and-data-mining exceptions (CDSM Directive Art 3–4) and, for general-purpose AI providers, the copyright policy duty (AI Act Art 53(1)(c&#8203;)), not US "fair use"
-
-<div class="ref-bottom">More details <a href="https://www.aalto.fi/en/services/artificial-intelligence-ai-the-ai-act-and-ai-literacy-at-aalto-university" target="_blank" rel="noopener">https://www.aalto.fi/en/services/artificial-intelligence-ai-the-ai-act-and-ai-literacy-at-aalto-university</a></div>
+<div class="ref-bottom">Floridi, L. (2019). Translating principles into practices of digital ethics: five risks of being unethical. Philosophy & Technology 32. · More on AI at Aalto: <a href="https://www.aalto.fi/en/services/artificial-intelligence-ai-the-ai-act-and-ai-literacy-at-aalto-university" target="_blank" rel="noopener">aalto.fi AI services</a></div>
 
 <style>
-/* Long URLs wrap instead of running off the slide */
-a { overflow-wrap: anywhere; }
+table th:nth-child(1) { width: 18%; }
+table th:nth-child(2) { width: 36%; }
 </style>
 
 <!--
-In the EU, the relevant rules for training data are the text-and-data-mining exceptions, not US fair use.
+"Ethics dumping" was first used in research ethics for research exported to low-resource settings; Floridi generalises it to digital ethics.
+Legal note: in the EU, training on scraped content falls under the text-and-data-mining exceptions (CDSM Directive Art 3–4) and, for general-purpose AI providers, the copyright policy duty (AI Act Art 53(1)(c)), not US "fair use".
 -->
+
+---
+layout: section
+color: dark
+hexText: "WRAP\nUP"
+class: title-middle
+---
+
+# Conclusions
 
 ---
 layout: default
-title: "You are a data subject too"
 ---
 
-###### I · Individuals
+###### Conclusions
 
-# You are a data subject too
+# A checklist for your next digital health project
 
-- **Digital traces:** cookies, location history, the apps and wearables you use. Use your access right (GDPR Art 15) and, for devices, your Data Act right to see what is collected
-- **Hidden metadata** in files, photos and shared links
-- **Where data are stored matters:** transfers to the US rely on the EU–US Data Privacy Framework (2023), upheld by the General Court in 2025 (*Latombe*, T-553/23); an appeal is pending at the Court of Justice (C-703/25 P)
-- **Your participants** did not sign your employer's contracts with cloud providers: choose tools for them, not for you
-- **Basic hygiene:** multi-factor authentication, a password manager, updates, encrypted storage and transfer, end-to-end encrypted messaging for sensitive conversations
-
-<!--
-Schrems II (2020) invalidated the Privacy Shield; the Data Privacy Framework replaced it in 2023.
--->
-
----
-layout: default
-title: "A decision path for your next project"
----
-
-###### I · Synthesis
-
-# A decision path for your next project
-
-<div class="grid-2">
-<div>
-
-1. Is it personal data? Is anyone identifiable by means reasonably likely?
-2. Is any of it special category, including by inference?
-3. Which legal basis (Art 6) and, if needed, which Art 9(2) condition?
-4. Is it genuine scientific research? Which research rules apply?
-5. Is ethics review mandatory? If not, who makes the ethical call?
-
-</div>
-<div>
-
-6. Is a DPIA required?
-7. Is the product a medical device? What is your role under the AI Act, and which tier?
-8. Where do you compute, with which tools and processors?
-9. What will you release, and does it pass the anonymity test?
-10. Tell people, keep records, and revisit when something changes
-
-</div>
-</div>
-
-<!--
-This is the take-home artefact. Students can apply it to their final project in this course.
--->
+1. Is it **personal data**? Is anyone identifiable by means reasonably likely?
+2. Is any of it **special category**, including by inference?
+3. Which **legal basis** (Art 6) and, if needed, which Art 9(2) condition?
+4. Is it genuine **scientific research**? Which research rules apply?
+5. Is **ethics review** mandatory? If not, who makes the ethical self-assessment?
+6. Is a **DPIA** required?
+7. **Other legislations**: Is the product a medical device? What is your role under the AI Act, and which level of risk?
+8. Where and howdo you **store** your data and run your **computations**? With which **tools** and **processors**?
+9. What will you **release**, and does it pass the anonymity test?
+10. During all steps: **Tell people, keep records, and revisit** when something changes.
 
 ---
 layout: default
 title: "Other EU rules that touch digital health"
 ---
 
-###### I · Synthesis
+###### Conclusions
 
 # Other EU rules that touch digital health
 
@@ -1444,31 +1413,25 @@ title: "Other EU rules that touch digital health"
 
 </div>
 
-The proposed AI Liability Directive and ePrivacy Regulation were withdrawn (OJ C/2025/5423). Tracker: [digibeetle.eu/legislation-tracker](https://digibeetle.eu/legislation-tracker/)
-
-<!--
-A curated list of what a digital-health data scientist meets in practice.
--->
+Tracker: [digibeetle.eu/legislation-tracker](https://digibeetle.eu/legislation-tracker/)
 
 ---
 layout: default
 title: "Summary"
 ---
 
-###### I · Synthesis
+###### Conclusions
 
 # Summary
 
-- **Ethics is not law:** lawful is the floor, and many choices above it are yours
-- **Data become health data by inference,** and sensor data identify people without names
+- **Ethics is not law:** 
+- **Data become health data by inference** and digital traces identify people without names
 - **Health data need two locks:** a legal basis and an Article 9 condition; consent to take part is not the legal basis
-- **Research gets privileges only if it is genuine and ethical;** the AI Act exempts research until it becomes a product
-- **Anonymity is a risk judgement** per entity, reassessed over time; pseudonymised data are still personal data
-- **Harms can be collective:** ask who is affected beyond your participants
+- **Research gets privileges only if it is genuine and ethical** 
+- **Anonymity is challenging** case-by-case and reassessed over time; pseudonymised data are still personal data
+- **Harms can be collective:** ask who is affected beyond your participants, protect also your own data
+- **Consider all laws that might apply**
 
-<!--
-Each bullet maps to a block: E, D, L, L, T, I.
--->
 
 ---
 layout: end
@@ -1478,500 +1441,3 @@ hexText: "DELTI"
 # Thank you!
 
 Slides and source: [github.com/eglerean/delti](https://github.com/eglerean/delti)
-
----
-layout: section
-color: dark
-hexText: "UDHR"
-class: title-middle
----
-
-# Appendix: human rights and data risks
-
-The 30 articles of the Universal Declaration of Human Rights, read through data
-
----
-layout: default
-title: "Universal declaration of human rights and data risks 1"
----
-
-###### Appendix
-
-# Universal declaration of human rights and data risks 1
-
-<div class="compact">
-
-| **Art.** | **Key Right** | **Risks from Data Misuse** |
-| --- | --- | --- |
-| 1 | Right to equality and dignity. | Biased AI algorithms perpetuating inequality and discrimination. |
-| 2 | Freedom from discrimination. | Unfair profiling based on personal data leading to discrimination in services or hiring. |
-| 3 | Right to life, liberty, and personal security. | Surveillance systems used to monitor and restrict personal freedoms. |
-| 4 | Freedom from slavery. | Trafficking networks using personal data to recruit, track and control victims. |
-| 5 | Freedom from torture and degrading treatment. | AI misuse in predictive policing leading to wrongful detention or degrading treatment. |
-| 6 | Right to recognition as a person before the law. | Exclusion from digital systems due to lack of data or incorrect identification. |
-
-</div>
-
----
-layout: default
-title: "Universal declaration of human rights and data risks 2"
----
-
-###### Appendix
-
-# Universal declaration of human rights and data risks 2
-
-<div class="compact">
-
-| **Art.** | **Key Right** | **Risks from Data Misuse** |
-| --- | --- | --- |
-| 7 | Right to equality before the law. | Algorithmic bias in judicial decisions disadvantaging certain groups. |
-| 8 | Right to effective legal remedy for rights violations. | Inaccessibility of remedies due to opaque AI systems denying accountability. |
-| 9 | Freedom from arbitrary arrest, detention, or exile. | AI-driven surveillance leading to false positives and arbitrary detentions. |
-| 10 | Right to a fair and public trial. | Lack of transparency in AI decision-making affecting judicial fairness. |
-| 11 | Right to be presumed innocent until proven guilty. | Predictive analytics labeling individuals as potential offenders without evidence. |
-| 12 | Right to privacy and protection from attacks on honor. | Intrusive data collection violating personal privacy. |
-
-</div>
-
----
-layout: default
-title: "Universal declaration of human rights and data risks 3"
----
-
-###### Appendix
-
-# Universal declaration of human rights and data risks 3
-
-<div class="compact">
-
-| **Art.** | **Key Right** | **Risks from Data Misuse** |
-| --- | --- | --- |
-| 13 | Right to freedom of movement and residence. | Geolocation tracking used to restrict or monitor movement. |
-| 14 | Right to seek asylum from persecution. | Data misuse exposing asylum seekers to risks in their home countries. |
-| 15 | Right to nationality and its change. | Lack of digital identity or errors in records denying nationality rights. |
-| 16 | Right to marry and found a family. | Reproductive-health data, e.g. from period-tracking apps, used to restrict reproductive choices. |
-| 17 | Right to own property. | Unauthorized access to or manipulation of digital assets. |
-| 18 | Right to freedom of thought, conscience, and religion. | Manipulation of beliefs through targeted misinformation. Mind-reading technology. |
-
-</div>
-
----
-layout: default
-title: "Universal declaration of human rights and data risks 4"
----
-
-###### Appendix
-
-# Universal declaration of human rights and data risks 4
-
-<div class="compact">
-
-| **Art.** | **Key Right** | **Risks from Data Misuse** |
-| --- | --- | --- |
-| 19 | Right to freedom of opinion and expression. | Censorship or suppression of opinions using AI-driven content moderation. |
-| 20 | Right to peaceful assembly and association. | Surveillance and data tracking deterring assembly or targeting participants. |
-| 21 | Right to participate in government and free elections. | Election manipulation through targeted disinformation campaigns. |
-| 22 | Right to social security and economic, social, and cultural rights. | Denial of benefits due to flawed algorithmic eligibility assessments. |
-| 23 | Right to work, equal pay, and join trade unions. | Algorithmic hiring biases excluding qualified candidates. |
-| 24 | Right to rest and leisure. | Excessive data-driven monitoring of employees reducing work-life balance. |
-
-</div>
-
----
-layout: default
-title: "Universal declaration of human rights and data risks 5"
----
-
-###### Appendix
-
-# Universal declaration of human rights and data risks 5
-
-<div class="compact">
-
-| **Art.** | **Key Right** | **Risks from Data Misuse** |
-| --- | --- | --- |
-| 25 | Right to an adequate standard of living; care for mothers and children. | Data misuse in welfare systems excluding vulnerable people. |
-| 26 | Right to education. | Biased educational AI tools limiting opportunities for marginalized groups. |
-| 27 | Right to cultural life, to share in scientific advancement, and to authorship. | AI use of creative works without permission; exclusion from the benefits of research built on people's data. |
-| 28 | Right to a social and international order upholding these rights. | Cross-border data misuse undermining global human rights efforts. |
-| 29 | Duties to the community and limits on rights for public welfare. | Data collection practices used disproportionately against marginalized groups. |
-| 30 | No one may use the UDHR to undermine others' rights. | Invoking security to justify surveillance that erodes other rights. |
-
-</div>
-
----
-layout: section
-color: dark
-hexText: "CASES"
-class: title-middle
----
-
-# Appendix: case exercises
-
-Interactive exercises to work through with the students
-
----
-layout: default
----
-
-# Where would you place these four cases?
-
-<div class="grid-2">
-<div class="card">
-
-**A · Mood experiment (2014).** Facebook altered the news feeds of 689,003 users for one week to test emotional contagion, then published the study. Users had accepted the data use policy.
-
-</div>
-<div class="card">
-
-**B · Fitness heat map (2018).** Strava published a global heat map of activities that users had chosen to share. It revealed the layout of military bases.
-
-</div>
-<div class="card">
-
-**C · Open sensor data.** A lab publishes "anonymised" smartwatch data for reproducibility. Heart-rate and location traces still single out participants.
-
-</div>
-<div class="card">
-
-**D · Psychotherapy records (2020).** Vastaamo's patient database had been reachable from the internet. Patients then received extortion demands.
-
-</div>
-</div>
-
-For each case: **is it ethical? is it lawful?**
-
-<!--
-Live poll, 5 minutes. Ask students to place each case before showing the next slide.
-A: Kramer, Guillory & Hancock (2014), PNAS. B: Strava, January 2018. C: a composite of a common practice. D: covered in the T block.
--->
-
----
-layout: default
----
-
-# Ethics and law can disagree about the same data use
-
-<div class="quad">
-<svg viewBox="0 0 760 420" role="img" aria-label="Two by two map: ethics on the vertical axis, law on the horizontal axis, with the four cases placed in quadrants">
-  <rect x="100" y="10" width="320" height="170" rx="10" class="q-box" />
-  <rect x="430" y="10" width="320" height="170" rx="10" class="q-goal" />
-  <rect x="100" y="190" width="320" height="170" rx="10" class="q-box" />
-  <rect x="430" y="190" width="320" height="170" rx="10" class="q-box" />
-  <text x="118" y="46" class="q-title">Ethical aim, unlawful route</text>
-  <text x="118" y="90" class="q-case">C · open "anonymised"</text>
-  <text x="118" y="118" class="q-case">sensor data</text>
-  <text x="448" y="46" class="q-title">Aligned: the goal</text>
-  <text x="448" y="90" class="q-case">Our running case,</text>
-  <text x="448" y="118" class="q-case">done well</text>
-  <text x="118" y="226" class="q-title">Neither</text>
-  <text x="118" y="270" class="q-case">D · Vastaamo</text>
-  <text x="448" y="226" class="q-title">Lawful, ethically contested</text>
-  <text x="448" y="270" class="q-case">A · Facebook mood study</text>
-  <text x="448" y="298" class="q-case">B · Strava heat map</text>
-  <text x="70" y="95" class="q-axis" transform="rotate(-90 70 95)">ethical</text>
-  <text x="70" y="275" class="q-axis" transform="rotate(-90 70 275)">unethical</text>
-  <text x="30" y="185" class="q-axis-title" transform="rotate(-90 30 185)">Ethics</text>
-  <text x="260" y="388" class="q-axis">unlawful</text>
-  <text x="590" y="388" class="q-axis">lawful</text>
-  <text x="425" y="414" class="q-axis-title">Law</text>
-</svg>
-</div>
-
-Each block ends by asking where the running case sits, and what moves it up and to the right.
-
-<style>
-.quad { display: flex; justify-content: center; margin: 0 0 0.5rem; }
-.quad svg { width: 540px; height: auto; }
-.q-box { fill: #fff; stroke: #000; stroke-width: 1.5; }
-.q-goal { fill: #C9DAF8; stroke: #1155CC; stroke-width: 3; }
-.q-title { font-size: 21px; font-weight: 700; fill: #000; }
-.q-case { font-size: 19px; fill: #000; }
-.q-axis { font-size: 17px; fill: #444; text-anchor: middle; }
-.q-axis-title { font-size: 20px; font-weight: 700; fill: #000; text-anchor: middle; }
-</style>
-
-<!--
-"Lawful" for A and B means lawful where and when it happened: A was US-based and pre-GDPR; in B users had opted in to public sharing.
-C has an ethical aim (reproducibility) but data that still single people out remain personal data, and publishing them needs a legal basis (EDPB Guidelines 02/2026).
-D: unlawful security failures and unethical treatment of the most vulnerable patients.
--->
-
----
-layout: default
----
-
-# Our running case: a sleep-and-mood study that becomes an app
-
-<div class="grid-2">
-<div class="card">
-
-### Phase 1: the study (university)
-
-- 200 student volunteers
-- Smartwatch: heart rate, sleep, steps
-- Phone: GPS, screen time
-- Daily mood questionnaire
-- Data synced through the watch vendor's cloud
-- Goal: predict low-mood days from sensor data
-
-</div>
-<div class="card">
-
-### Phase 2: the app (spin-out)
-
-- Model trained on the study data
-- Stress-coaching app for students
-- Offered to universities as a well-being service
-- An LLM writes personal feedback
-
-</div>
-</div>
-
-In every block: **Is it ethical? Is it lawful? Where do they diverge? How do we resolve it?**
-
-<!--
-The case is invented but close to digital-phenotyping studies from lecture 4 (e.g. mood and sleep sensing).
-It touches every topic: inferred health data, ethics review, legal basis, the emotion-recognition ban in education, device rules, anonymisation and LLM use.
--->
-
----
-layout: default
-title: "Case check: which of the study's data are health data?"
----
-
-###### D · Case check
-
-# Case check: which of the study's data are health data?
-
-<div class="compact">
-
-| Data | Personal data? | Special category? |
-| --- | --- | --- |
-| Heart rate, sleep | Yes | Yes: health |
-| Steps | Yes | Once used to assess health, yes |
-| GPS traces | Yes | Can reveal religion or health through places visited |
-| Screen time | Yes | Not on its own |
-| Daily mood ratings | Yes | Yes: mental health |
-| Model output "low-mood day" | Yes | Yes: inferred health data |
-
-</div>
-
-Where is the study on the 2×2 so far? Lawful only if we treat almost everything as health data.
-
-<!--
-Let students answer before revealing the table. The debatable rows (steps, GPS, screen time) are the useful ones: context and purpose decide.
--->
-
----
-layout: default
-title: "Case check: who reviews the study, and who reviews the app?"
----
-
-###### E · Case check
-
-# Case check: who reviews the study, and who reviews the app?
-
-<div class="grid-2">
-<div class="card">
-
-### The study
-
-- Probably **non-medical** research: observational, no intervention
-- University ethics review only if a TENK condition applies, e.g. a risk of mental harm from daily mood questions
-- Power imbalance: do not let teachers recruit their own students
-- If the aim becomes diagnosis, ask whether it is medical research
-
-</div>
-<div class="card">
-
-### The app
-
-- **No** mandatory ethics review
-- A DPIA is required (health data, systematic monitoring)
-- MDR conformity assessment if it makes medical claims
-- The ethical judgement sits with the company, and with you if you build it
-
-</div>
-</div>
-
-<!--
-Quadrant check: the study can sit top-right with review and safeguards; the app risks drifting to "lawful, ethically contested".
--->
-
----
-layout: default
-title: "Pair task: the study versus the app"
----
-
-###### L · Pair task (8 min)
-
-# Pair task: the study versus the app
-
-<div class="compact">
-
-| **Question** | **Study (university)** | **App (spin-out)** |
-| --- | --- | --- |
-| Legal basis (Art 6)? | | |
-| Article 9 condition? | | |
-| Ethics review? | | |
-| Medical device? | | |
-| AI Act: out of scope, prohibited, high-risk, transparency? | | |
-| How would you show it works, and for whom? | | |
-
-</div>
-
-Work in pairs. The answers differ between the two columns, and that is the point.
-
-<!--
-Give 8 minutes, then take two or three answers before showing the next slide.
--->
-
----
-layout: default
-title: "One possible answer"
----
-
-###### L · Pair task
-
-# One possible answer
-
-<div class="small compact">
-
-| **Question** | **Study (university)** | **App (spin-out)** |
-| --- | --- | --- |
-| **Legal basis** | Public interest: Art 6(1)(e) + Data Protection Act s. 4(3) | Consent or contract for app users; reusing study data needs its own basis and an agreement |
-| **Article 9 condition** | 9(2)(j) + Data Protection Act s. 6(1)(7), with safeguards | 9(2)(a) explicit consent of app users |
-| **Ethics review** | Only if a TENK condition applies | None mandatory; DPIA required |
-| **Medical device** | No: research without medical claims | Depends on claims: "stress coaching" is wellness, "detects depression" is medical (class IIa or higher) |
-| **AI Act** | Out of scope (Art 2(6)) | Prohibited if a university uses it to infer students' emotions from biometric data, unless for medical or safety reasons; high-risk if it is a device needing a notified body; transparency duties for the LLM feedback (Art 50) |
-| **Evidence it works** | Validate sensor features against a reference; test the model on new participants and across groups; report with TRIPOD+AI | Clinical evaluation if it is a device; a trial before effectiveness claims; check performance and uptake across groups |
-
-</div>
-
-<!--
-Accept other well-argued answers. The key learning: the same model moves through different legal regimes as it moves from research to product.
-The last row covers evaluating tools built on patient-generated data. Compliance does not show that a tool works: that needs evidence, and the bar rises with the claims.
-- Sensor measures: the V3 framework (verification, analytical validation, clinical validation; Goldsack et al., 2020).
-- Prediction models: report development and validation with TRIPOD+AI (Collins et al., BMJ 2024); external validation on new people matters more than accuracy on the training cohort.
-- Interventions: early clinical evaluation of AI with DECIDE-AI (Vasey et al., 2022); trials with SPIRIT-AI and CONSORT-AI (2020).
-- Health systems' evidence bars: NICE Evidence Standards Framework for digital health technologies (UK); DiGA in Germany, which requires evidence of a positive care effect for reimbursement.
-- For whom: performance, engagement and drop-out can differ by age, skin tone, device model or digital literacy; report subgroup results (justice, slide 17; bias, slide 55).
--->
-
----
-layout: default
-title: "Live demo: re-identify, then add noise"
----
-
-###### T · Live demo (10 min)
-
-# Live demo: re-identify, then add noise
-
-```python
-import numpy as np
-import pandas as pd
-
-df = pd.read_csv("toy_wearable.csv")  # synthetic data, no names
-qi = ["birth_year", "sex", "postcode", "watch_model"]
-unique = df.groupby(qi).size().eq(1).sum()
-print(f"{unique} of {len(df)} participants are unique on {qi}")
-
-# A differentially private count with the Laplace mechanism
-epsilon = 1.0                       # privacy budget
-true_count = (df["sleep_h"] < 6).sum()
-noisy_count = true_count + np.random.laplace(scale=1 / epsilon)
-```
-
-For real releases, use a vetted library (e.g. OpenDP, diffprivlib), not hand-written noise.
-
-<!--
-The toy dataset is synthetic. Uniqueness grows as quasi-identifiers are added; the noisy count changes with epsilon.
-A count has sensitivity 1, so the Laplace scale is 1/epsilon.
--->
-
----
-layout: default
-title: "Case check: can we publish the dataset, and can we send it to an LLM?"
----
-
-###### T · Case check
-
-# Case check: can we publish the dataset, and can we send it to an LLM?
-
-<div class="grid-2">
-<div class="card">
-
-### Publish?
-
-- Raw or pseudonymised: **no**, still personal data
-- Per-participant daily features: likely fail no record isolation and no linkage
-- Group statistics with differential privacy, or tested synthetic data: **possibly**, with a documented assessment
-- Alternative: controlled access through a secure environment
-
-</div>
-<div class="card">
-
-### Send to an LLM?
-
-- Only an approved tool, under a processor agreement
-- Processed in the EU, or with a valid transfer basis
-- Covered by the privacy notice and the DPIA
-- Never a consumer chatbot
-
-</div>
-</div>
-
-<!--
-Quadrant check: publishing "anonymised" daily features moves the study to "ethical aim, unlawful route". Controlled access keeps it top-right.
--->
-
----
-layout: default
-title: "Back to the case: what moves it up and to the right"
----
-
-###### I · Synthesis
-
-# Back to the case: what moves it up and to the right
-
-<div class="grid-2">
-<div class="card">
-
-### The study
-
-- **Lawful:** public-interest basis, Art 9(2)(j), DPIA, processor agreement with the vendor
-- **Ethical:** recruitment free of power imbalance, minimised features, secure environment, controlled release, honest information about vendors and LLMs
-
-</div>
-<div class="card">
-
-### The app
-
-- **Lawful:** explicit consent, its own DPIA, device assessment if it makes medical claims, no emotion inference in education without a medical purpose
-- **Ethical:** claims backed by evidence, no reuse of study data beyond what participants were told, performance tested across groups
-
-</div>
-</div>
-
-<!--
-Ask students to move each phase on the 2×2 from the hook. Most will put the study top-right and the app bottom-right unless the safeguards above are in place.
--->
-
----
-layout: default
-title: "Exit ticket"
----
-
-###### I · Exit ticket (3 min)
-
-# Exit ticket
-
-1. Name one way the study and the app differ **legally**, and one way they differ **ethically**.
-2. Which legal basis and Article 9 condition would you use for the study, and why not consent?
-3. A colleague says the dataset is anonymous because names were removed. Which **two questions** do you ask?
-
-<!--
-One question per learning outcome. Collect answers on paper or with a quick form; they show what to fix next year.
--->

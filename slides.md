@@ -1015,7 +1015,10 @@ title: "Data protection by design starts with what you collect"
 
 ###### T · Technology
 
-# Data protection by design starts with what you collect
+# Privacy by design
+
+<div class="pbd">
+<div>
 
 - **Art 25:** data protection by design and by default
 - **Before collection:** collect features, not raw streams (daily sleep duration, not raw accelerometer data); coarsen location; avoid free text
@@ -1024,8 +1027,83 @@ title: "Data protection by design starts with what you collect"
 - **Before release:** run the anonymity test; release aggregates or controlled access; document every release
 - **Throughout:** a privacy notice in plain language that names vendors and transfers; a DPIA when risk is high
 
+</div>
+<div class="card yellow">
+
+**The 7 principles of privacy by design** <span class="small">([Cavoukian, 2009](https://en.wikipedia.org/wiki/Privacy_by_design))</span>
+
+<div class="small">
+
+1. **Proactive not reactive;** preventive not remedial
+2. **Privacy as the default** setting
+3. **Privacy embedded** into design
+4. **Full functionality:** positive-sum, not zero-sum
+5. **End-to-end security:** full lifecycle protection
+6. **Visibility and transparency:** keep it open
+7. **Respect for user privacy:** keep it user-centric
+
+</div>
+</div>
+</div>
+
+<style>
+.pbd { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+</style>
+
 <!--
 Art 25 is "data protection by design and by default". "Large scale" has no fixed threshold such as a number of participants.
+-->
+
+---
+layout: image-right
+image: /images/pets-landscape.png
+class: fit-image
+title: "Privacy Enhancing Technologies (PETs)"
+---
+
+###### T · Technology - Privacy Enhancing Technologies 
+
+# Privacy Enhancing Technologies (PETs)
+
+Broadly two families:
+
+- Techniques that **transform the data**
+- Techniques that **harden the computing environment**
+
+Embedded in the security of all other components.
+
+<p class="pets-caption">Figure 5.1 from <a href="https://www.edpb.europa.eu/system/files/2025-06/spe-training-on-ai-and-data-protection-technical_en.pdf">Glerean 2025</a>. The landscape of PETs solutions. Various techniques can be combined to ensure the privacy of the entire system by altering the data or by improving security of storage, communication, and computations. The image is an evolution of Garrido et al. (2022).</p>
+
+<style>
+.slidev-layout .pets-caption { position: absolute; left: 3.5rem; right: 2rem; bottom: 3.2rem; font-size: 0.66rem !important; line-height: 1.3 !important; opacity: 0.8; }
+</style>
+
+---
+layout: default
+title: "Privacy-enhancing technologies trade risk for utility and effort"
+---
+
+###### T · Technology - Privacy Enhancing Technologies 
+
+# Privacy-enhancing technologies trade risk for utility and effort
+
+<div class="small compact">
+
+| **Technique** | **Protects against** | **Main cost** | **In a wearable study** |
+| --- | --- | --- | --- |
+| **Pseudonymisation** | Casual identification | Key management; data stay personal | Codes instead of names at ingestion |
+| **Differential privacy** | Inference from released statistics or models | Noise lowers accuracy; privacy budget | Release group averages with calibrated noise |
+| **Federated learning** | Central collection of raw data | Engineering; updates can leak without DP | Train on phones, share only model updates |
+| **Secure processing environment** | Uncontrolled copies and exports | Access procedures, less flexibility | Analyse inside, export only checked aggregates |
+| **Synthetic data** | Sharing real records | Fidelity and leakage must be tested | Share synthetic data for method development |
+| **Homomorphic encryption, secure multiparty computation** | Exposure during computation | Slow; specialist skills | Joint analysis across hospitals without pooling data |
+
+</div>
+
+<div class="ref-bottom">Jarmul (2023), ch. 2, 5–7. · Glerean (2025), ch. 5.</div>
+
+<!--
+No technique is a free pass: each moves risk somewhere else. Combine them, and document why the combination is enough.
 -->
 
 ---
@@ -1033,9 +1111,9 @@ layout: default
 title: "Anonymity is a risk judgement, not a technique"
 ---
 
-###### T · Technology
+###### T · Technology - Privacy Enhancing Technologies 
 
-# Anonymity is a risk judgement, not a technique
+# Anonymous data
 
 EDPB Guidelines 02/2026 (version for consultation): data are anonymous only if, for **each relevant entity**, all three criteria hold.
 
@@ -1068,6 +1146,8 @@ No specific, meaningful conclusion about an identifiable person can be drawn.
 - Anonymising is itself processing and needs a **legal basis** (para 38)
 - Access controls alone do **not** make data anonymous (para 90)
 
+<div class="ref-bottom"><a href="https://www.edpb.europa.eu/public-consultations/guidelines-022026-on-anonymisation_en" target="_blank" rel="noopener">EDPB Guidelines 02/2026 on anonymisation</a> (version for public consultation).</div>
+
 <!--
 The draft guidelines were open for consultation until 30 October 2026; check for the final version.
 -->
@@ -1077,38 +1157,46 @@ layout: default
 title: "Removing names is not anonymisation"
 ---
 
-###### T · Technology
+###### T · Technology - Privacy Enhancing Technologies 
 
-# Removing names is not anonymisation
+# From personal to anonymous data
 
 <div class="spectrum">
-  <div class="sp-top"><p><strong>Raw personal data</strong></p><p>Direct identifiers present</p></div>
-  <div class="sp-top"><p><strong>Pseudonymised</strong></p><p>Identifiers replaced by codes; key kept (Art 4(5))</p></div>
-  <div class="sp-top"><p><strong>De-identified, masked</strong></p><p>Identifiers removed; rich records kept</p></div>
-  <div class="sp-top"><p><strong>Aggregated or noisy release</strong></p><p>Counts, statistics, differential privacy</p></div>
-  <div class="sp-top"><p><strong>Synthetic data, trained models</strong></p><p>No real records released</p></div>
+  <div class="sp-top"><p><strong>Personal data with direct identifiers</strong></p></div>
+  <div class="sp-top"><p><strong>Pseudonymisation</strong></p><p class="sp-tech">Replacing strong identifiers: tokenization, hashing, encryption</p></div>
+  <div class="sp-top"><p><strong>Masking</strong></p><p class="sp-tech">Suppression / removal of strong identifiers</p></div>
+  <div class="sp-top"><p><strong>Anonymisation</strong></p><p class="sp-tech">K-anonymity, l-diversity, t-closeness, perturbation, data swapping, differential privacy</p></div>
+  <div class="sp-top"><p><strong>Anonymisation</strong></p><p class="sp-tech">Aggregation, data synthesis</p></div>
+  <div class="sp-ends"><span class="sp-personal">Personal data</span><span class="sp-anon">Anonymous data</span></div>
   <div class="sp-arrow" aria-hidden="true"></div>
-  <div class="sp-bottom"><p><strong>Identifiable by anyone with access</strong></p></div>
-  <div class="sp-bottom"><p><strong>Personal data for whoever can re-identify</strong></p></div>
-  <div class="sp-bottom"><p><strong>Usually still personal: isolation and linkage remain</strong></p></div>
-  <div class="sp-bottom"><p><strong>Anonymous only if the three criteria pass</strong></p></div>
-  <div class="sp-bottom"><p><strong>Can still leak: test before claiming anonymity</strong></p></div>
+  <div class="sp-bottom"><p><strong>Easy to re-identify</strong></p></div>
+  <div class="sp-bottom"><p><strong>Can be re-identified with the key</strong></p><p class="sp-crit">Still personal data for the key holder</p></div>
+  <div class="sp-bottom"><p><strong>The key is lost but other data (will) exist, and it can be reasonably likely to re-identify</strong></p><p class="sp-crit">Usually fails isolation and linkage</p></div>
+  <div class="sp-bottom"><p><strong>Re-identification is not reasonably likely, but data is still data from individuals</strong></p><p class="sp-crit">Anonymous only if isolation, linkage and inference all pass</p></div>
+  <div class="sp-bottom"><p><strong>Re-identification is not reasonably likely, and data is not related to any individual</strong></p><p class="sp-crit">Still test: small counts, outliers and memorised records can fail the criteria</p></div>
 </div>
 
 Pseudonymised data stay personal data for the key holder (EDPB Guidelines 01/2025); for a recipient without reasonable means to re-identify, they may not be (CJEU C-413/23 P).
 
-<div class="ref-bottom">Deeper look at minimisation and anonymisation: <a href="https://zenodo.org/records/10649060" target="_blank" rel="noopener">https://zenodo.org/records/10649060</a></div>
+<div class="ref-bottom">Figure adapted from <a href="https://fundamentals-of-secure-ai-systems-with-personal-data-9cd9e2.pages.code.europa.eu/images/src/FIGS2.2_anon_spectrum.svg" target="_blank" rel="noopener">Glerean, E. (2025). Fundamentals of Secure AI Systems with Personal Data, fig. S2.2</a>. Deeper look at minimisation and anonymisation: <a href="https://zenodo.org/records/10649060" target="_blank" rel="noopener">https://zenodo.org/records/10649060</a></div>
 
 <style>
-/* Five steps from identifiable to possibly anonymous data, over a dark-to-light arrow */
-.spectrum { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 1rem; margin-top: 1rem; }
-.spectrum p { margin: 0 0 0.3rem; }
+/* Five steps from personal to anonymous data, over an orange-to-teal arrow (wording from Glerean 2025, fig. S2.2) */
+.spectrum { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 1rem; margin-top: 0.6rem; }
+.spectrum p { margin: 0 0 0.2rem; font-size: 0.9rem; line-height: 1.2; }
 .sp-top { align-self: start; }
-.sp-arrow { grid-column: 1 / -1; height: 2.6rem; margin: 1.2rem 0; background: linear-gradient(90deg, #434343, #9FC5E8); clip-path: polygon(0 25%, calc(100% - 2.6rem) 25%, calc(100% - 2.6rem) 0, 100% 50%, calc(100% - 2.6rem) 100%, calc(100% - 2.6rem) 75%, 0 75%); }
+.spectrum .sp-tech { font-size: 0.65rem; font-style: italic; }
+.spectrum .sp-crit { font-size: 0.65rem; color: var(--asc-muted); }
+.sp-ends { grid-column: 1 / -1; display: flex; justify-content: space-between; margin-top: 0.5rem; padding-right: 3rem; font-style: italic; font-weight: 700; }
+.sp-personal { color: #F07F5C; }
+.sp-anon { color: #2F6B6B; }
+.sp-arrow { grid-column: 1 / -1; height: 2.2rem; margin: 0.1rem 0 0.6rem; background: linear-gradient(90deg, #F07F5C, #2F6B6B); clip-path: polygon(0 25%, calc(100% - 2.6rem) 25%, calc(100% - 2.6rem) 0, 100% 50%, calc(100% - 2.6rem) 100%, calc(100% - 2.6rem) 75%, 0 75%); }
 </style>
 
 <!--
-Common misconceptions: "impossible to re-identify" is not the legal test; masking is still pseudonymisation; aggregates and synthetic data are not anonymous by default; differential privacy describes how a result is released, not a dataset.
+The grey lines under each step map it to the three EDPB criteria (isolation, linkage, inference).
+The book figure says "impossible to re-identify"; the slide uses "not reasonably likely" because the legal test is an insignificant likelihood, not zero.
+Common misconceptions: masking is still pseudonymisation; aggregates and synthetic data are not anonymous by default; differential privacy describes how a result is released, not a dataset.
 -->
 
 ---
@@ -1116,14 +1204,14 @@ layout: default
 title: "Aggregates, synthetic data and models can still leak"
 ---
 
-###### T · Technology
+###### T · Technology - Privacy Enhancing Technologies  
 
-# Aggregates, synthetic data and models can still leak
+# Leaks from aggregates, synthetic data, and models
 
-- **Reconstruction:** published census tables allowed individual records to be reconstructed; the US Census Bureau adopted differential privacy for the 2020 census
-- **Membership inference:** an attacker can tell whether a person's record was in the training data
-- **Memorisation:** language models can reproduce training data verbatim when prompted
-- **EDPB:** AI models trained on personal data cannot in all cases be considered anonymous (Opinion 28/2024); inference from aggregates, synthetic data and models counts against anonymity (Guidelines 02/2026, paras 17, 77, 82)
+- **Reconstruction:** the US Census Bureau rebuilt person-level records (block, age, sex, race) from its own published 2010 census tables, and matched many of them to commercial data. It adopted differential privacy for the 2020 census ([Garfinkel et al., 2019](https://doi.org/10.1145/3287287))
+- **Membership inference:** an attacker can tell whether a person's record was in the data. Even summary allele frequencies from a genomic study revealed whether a given person had taken part ([Homer et al., 2008](https://doi.org/10.1371/journal.pgen.1000167)); the same works against trained models ([Shokri et al., 2017](https://doi.org/10.1109/SP.2017.41))
+- **Memorisation:** language models can reproduce training data verbatim when prompted; names, phone numbers and email addresses were extracted from GPT-2 ([Carlini et al., 2021](https://arxiv.org/abs/2012.07805))
+- **EDPB:** AI models trained on personal data cannot in all cases be considered anonymous ([Opinion 28/2024](https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en)); inference from aggregates, synthetic data and models counts against anonymity ([Guidelines 02/2026](https://www.edpb.europa.eu/public-consultations/guidelines-022026-on-anonymisation_en), paras 17, 77, 82)
 
 <div class="ref-bottom">Jarmul, K. (2023). Practical Data Privacy, ch. 2 and 4. · Glerean, E. (2025). Fundamentals of Secure AI Systems with Personal Data, ch. 7.</div>
 
@@ -1133,40 +1221,31 @@ The practical consequence: a model trained on the study data may itself be perso
 
 ---
 layout: default
-title: "Privacy-enhancing technologies trade risk for utility and effort"
----
-
-###### T · Technology
-
-# Privacy-enhancing technologies trade risk for utility and effort
-
-<div class="small compact">
-
-| **Technique** | **Protects against** | **Main cost** | **In a wearable study** |
-| --- | --- | --- | --- |
-| **Pseudonymisation** | Casual identification | Key management; data stay personal | Codes instead of names at ingestion |
-| **Differential privacy** | Inference from released statistics or models | Noise lowers accuracy; privacy budget | Release group averages with calibrated noise |
-| **Federated learning** | Central collection of raw data | Engineering; updates can leak without DP | Train on phones, share only model updates |
-| **Secure processing environment** | Uncontrolled copies and exports | Access procedures, less flexibility | Analyse inside, export only checked aggregates |
-| **Synthetic data** | Sharing real records | Fidelity and leakage must be tested | Share synthetic data for method development |
-| **Homomorphic encryption, secure multiparty computation** | Exposure during computation | Slow; specialist skills | Joint analysis across hospitals without pooling data |
-
-</div>
-
-<div class="ref-bottom">Jarmul (2023), ch. 2, 5–7. · Glerean (2025), ch. 5.</div>
-
-<!--
-No technique is a free pass: each moves risk somewhere else. Combine them, and document why the combination is enough.
--->
-
----
-layout: default
 title: "Sending participant data to an LLM is a data protection decision"
 ---
 
-###### T · Technology
+###### T · Technology - Cloud computing and remote AI endpoints
 
-# Sending participant data to an LLM is a data protection decision
+# Personal data processed on the cloud
+
+<div class="cloud">
+<div>
+
+The cloud is someone else's computer: **confidentiality can be lost**
+
+- **Provider access:** data are decrypted while processed; admins, subprocessors and abuse-monitoring staff may see them
+- **Retention you do not control:** prompts and outputs are logged; in 2025 a US court ordered OpenAI to keep even deleted ChatGPT chats ([NYT v. OpenAI](https://simonwillison.net/2025/Jun/5/openai-court-order/))
+- **Training on inputs:** consumer plans of US LLM providers such as OpenAI and Anthropic may train on chats unless you opt out ([Anthropic, 2025](https://www.anthropic.com/news/updates-to-our-consumer-terms)); business and API terms usually do not
+- **Foreign access:** the US [CLOUD Act](https://www.congress.gov/bill/115th-congress/house-bill/4943) lets US authorities compel US providers to hand over data, even from EU data centres; US surveillance law is why Privacy Shield fell ([Schrems II, 2020](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62018CJ0311))
+- **Fragile transfer basis:** the EU–US Data Privacy Framework was upheld in 2025 (Latombe), but an [appeal is pending](https://eur-lex.europa.eu/eli/C/2025/6610/oj) (C-703/25 P)
+- **Safer options:** approved enterprise contracts (no training, limited retention), EU-hosted or local open-weight models, encryption keys you hold; the EU is investing in its own cloud and AI capacity ([Tech Sovereignty Package, 2026](https://digital-strategy.ec.europa.eu/en/news/commission-proposes-tech-sovereignty-package-strengthen-europes-digital-autonomy-and-resilience))
+
+</div>
+<div class="card yellow">
+
+**Sending participant data to an LLM**
+
+<div class="small">
 
 Before you paste or upload:
 
@@ -1177,32 +1256,36 @@ Before you paste or upload:
 5. **Were participants told** in the privacy notice, and does the DPIA cover it?
 6. **Can the output** contain personal data or new health inferences?
 
-Lecture 5 showed what LLMs can do with phenotyping data; this is the checklist before you do it.
+</div>
+</div>
+</div>
+
+<style>
+.cloud { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+.cloud li { font-size: 0.9rem; line-height: 1.2; }
+.cloud .small li { font-size: inherit; }
+</style>
 
 <!--
-Never use a consumer chatbot with participants' data. Institutional tools exist for a reason: contracts, location and no training on inputs.
+Status checks before teaching: the OpenAI preservation order was lifted for new chats in October 2025; Anthropic's consumer training opt-out dates from August 2025; the CJEU appeal on the Data Privacy Framework (C-703/25 P) was pending in late 2025.
 -->
+
 
 ---
 layout: default
-title: "Security failures harm individuals directly: Vastaamo"
+title: "Cybersecurity threats"
 ---
 
-###### T · Technology
+###### T · Technology - cybersecurity
 
-# Security failures harm individuals directly: Vastaamo
+# Cybersecurity threats
 
-- Vastaamo, a Finnish psychotherapy provider, kept its patient database on a server reachable from the internet without a firewall from 2017 to 2019
-- Attackers took therapy records; in 2020 the patients themselves received extortion demands
-- **Finnish DPA, 7 Dec 2021:** €608,000 fine for failing to secure the data and to notify the breach (Art 5(1)(f), 32, 33, 34); the company went bankrupt
-- For health data, security is not a technical detail: it is the main duty you owe participants
+- **Health data are a prime target:** healthcare breaches remain the costliest of any sector, on average $6.64M each ([IBM Cost of a Data Breach 2026](https://www.chiefhealthcareexecutive.com/view/cost-of-breaches-healthcare-still-leads-all-sectors-and-ai-is-used-in-more-attacks))
+- **Scale:** the 2024 ransomware attack on Change Healthcare exposed data on about 193 million people ([HHS](https://www.hhs.gov/hipaa/for-professionals/special-topics/change-healthcare-cybersecurity-incident-frequently-asked-questions/index.html))
+- **The harm lands on people:** Vastaamo, a Finnish psychotherapy provider, left its patient database reachable from the internet; in 2020 patients were blackmailed one by one with their therapy notes. €608,000 fine (Art 5(1)(f), 32–34); the company went bankrupt ([EDPB](https://www.edpb.europa.eu/news/national-news/2022/administrative-fine-imposed-psychotherapy-centre-vastaamo-data-protection_en))
+- **Usual causes:** stolen credentials and phishing, unpatched software, misconfigured servers and cloud storage, breaches at vendors
+- **AI agents make leaks more likely:** agents now find exploitable vulnerabilities on their own ([Google Big Sleep](https://projectzero.google/2024/10/from-naptime-to-big-sleep.html)), and an attacker used an AI coding agent to break into and extort at least 17 organisations, including healthcare ([Anthropic, 2025](https://www.anthropic.com/news/detecting-countering-misuse-aug-2025)). More flaws found faster means less time to patch
 
-<div class="ref-bottom"><a href="https://www.edpb.europa.eu/news/national-news/2022/administrative-fine-imposed-psychotherapy-centre-vastaamo-data-protection_en" target="_blank" rel="noopener">EDPB: administrative fine imposed on psychotherapy centre Vastaamo (2022)</a></div>
-
-<!--
-The "I" of DELTI in its starkest form: tens of thousands of people whose therapy notes were used against them.
-Back to the 2×2: unlawful and unethical.
--->
 
 ---
 layout: section
